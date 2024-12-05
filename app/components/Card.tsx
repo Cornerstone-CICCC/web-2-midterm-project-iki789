@@ -1,28 +1,31 @@
 import React from "react";
-import Button from "./Button";
-import { FaCirclePlay } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa6";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  id: string;
   title: string;
-  children?: React.ReactNode;
+  rating: string;
+  year: string;
 }
 
 const Card = (props: CardProps) => {
   return (
-    <div
-      className={`bg-slate-300 w-full h-full text-gray-900 p-8 rounded-3xl bg-cover bg-[url('https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg')] relative z-10 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-3xl before:-z-[1] before:content-[''] before:bg-gradient-to-r before:from-[#0000005e] ${
-        props.className || ""
-      }`}
-    >
-      <div className="max-w-[200px]">
-        <div className="font-bold text-3xl text-white">
-          Puss in Boots: The Last Wish
-        </div>
-        <div className="mt-5">
-          <Button className="-ml-4">
-            <FaCirclePlay className="mr-2" />
-            Watch Trailer
-          </Button>
+    <div className="flex flex-col rounded-2xl shadow-lg">
+      <div className="rounded-2xl relative">
+        <img
+          className="rounded-2xl"
+          src="https://media.themoviedb.org/t/p/w440_and_h660_face/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg"
+          alt=""
+        />
+        <div className="absolute bottom-0 left-0 p-2">
+          <div className="font-semibold mb-1">{props.title}</div>
+          <div className="flex text-sm divide-solid divide-x-2 divide-white divide-opacity-25">
+            <div className="flex items-center pr-3">
+              <FaStar className="text-yellow-500 mr-1" />
+              {props.rating}
+            </div>
+            <div className="pl-3">{props.year}</div>
+          </div>
         </div>
       </div>
     </div>
