@@ -7,14 +7,14 @@ export default function Home() {
   return (
     <div className="min-h-screen pb-20 gap-16 sm:pb-20 font-[family-name:var(--font-geist-sans)]">
       <main>
-        <section className="container mx-auto my-4">
-          <h2 className="font-bold text-2xl mb-4">Trending in Animation</h2>
+        <section className="container mx-auto mb-4">
+          <h2 className="font-bold text-2xl mb-4"></h2>
           <Slide title="puss"></Slide>
         </section>
 
-        <section className="container mx-auto my-4">
+        {/* <section className="container mx-auto my-2">
           <GenreList />
-        </section>
+        </section> */}
 
         <section className="container mx-auto">
           <h2 className="font-bold text-2xl mb-4">Top Rated Animation</h2>
