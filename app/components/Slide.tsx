@@ -4,6 +4,7 @@ import React from "react";
 import Button from "./Button";
 import { FaCirclePlay } from "react-icons/fa6";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import WatchTrailerButton from "./WatchTrailerButton";
 
 interface SlideProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -32,10 +33,7 @@ const Slide = (props: SlideProps) => {
               Puss in Boots: The Last Wish
             </div>
             <div className="mt-5">
-              <Button className="-ml-4">
-                <FaCirclePlay className="mr-2" />
-                Watch Trailer
-              </Button>
+              <WatchTrailerButton />
             </div>
           </div>
         </div>
