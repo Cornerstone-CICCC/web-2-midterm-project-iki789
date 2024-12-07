@@ -3,7 +3,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Card from "./Card";
 import Loader from "./Loader";
-import { fetchMovies } from "../services/movieService";
+import { fetchMovies } from "../services/mService";
 import delayPromise from "../utils/delayPromise";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";

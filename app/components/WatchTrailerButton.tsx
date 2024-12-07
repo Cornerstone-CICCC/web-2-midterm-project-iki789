@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import { FaCirclePlay } from "react-icons/fa6";
 import Button from "./Button";
 
-const WatchTrailerButton = () => {
+interface WatchTrailerButtonProps {
+  ytId: string;
+}
+
+const WatchTrailerButton = (props: WatchTrailerButtonProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const YtModal = (
@@ -19,7 +23,7 @@ const WatchTrailerButton = () => {
           style={{
             borderRadius: "1rem",
           }}
-          src="https://www.youtube.com/embed/tHb7WlgyaUc?si=Ulb9Zezmrd-dtnWi"
+          src={`https://www.youtube.com/embed/${props.ytId}?si=Ulb9Zezmrd-dtnWi`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
