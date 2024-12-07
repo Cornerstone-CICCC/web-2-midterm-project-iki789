@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { FaMoon, FaRegSun } from "react-icons/fa";
 
+const systemIsDarkTheme =
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState<boolean>(
-    window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [isDark, setIsDark] = useState<boolean>(systemIsDarkTheme);
 
   useEffect(() => {
     window
@@ -31,14 +32,12 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button className="rounded-full" onClick={handleToggle}>
-      <button
-        type="button"
-        className="rounded-full p-2 transition-all bg-transparent hover:bg-sky-800 hover:text-white"
-        onClick={handleToggle}
-      >
-        {isDark ? <FaMoon /> : <FaRegSun />}
-      </button>
+    <button
+      type="button"
+      className="rounded-full p-2 transition-all bg-transparent hover:bg-sky-800 hover:text-white"
+      onClick={handleToggle}
+    >
+      {isDark ? <FaMoon /> : <FaRegSun />}
     </button>
   );
 };
