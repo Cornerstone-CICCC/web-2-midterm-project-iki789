@@ -37,7 +37,13 @@ export default function Movies({
 
   return (
     <div className="min-h-[74vh] text-black dark:text-white mb-8 gap-16 font-[family-name:var(--font-geist-sans)]">
-      {isLoading ? <Loader /> : <></>}
+      {isLoading ? (
+        <div className="mt-40">
+          <Loader />
+        </div>
+      ) : (
+        <></>
+      )}
       {!isLoading && details ? (
         <main>
           <section className="container mx-auto mb-4">
@@ -69,7 +75,7 @@ export default function Movies({
                     </p>
                   ) : (
                     <p className="mt-4 text-gray-500 text-sm">
-                      EP &bull; {details.number_of_episodes}
+                      Episodes &bull; {details.number_of_episodes}
                     </p>
                   )}
                 </div>
