@@ -65,7 +65,7 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
 
   return (
     <div
-      className="fixed left-0 top-0 w-full h-full bg-slate-800 z-[100]"
+      className="fixed left-0 top-0 w-full h-full bg-slate-800 z-[30]"
       tabIndex={0}
     >
       <div className="flex justify-end mt-4 mr-2">
