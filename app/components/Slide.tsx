@@ -6,6 +6,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import WatchTrailerButton from "./WatchTrailerButton";
 import { TrendingResponseItem } from "../services/mService";
+import Link from "next/link";
 
 interface SlideProps extends React.HTMLAttributes<HTMLDivElement> {
   items: TrendingResponseItem[];
@@ -24,7 +25,7 @@ const Slide = (props: SlideProps) => {
       aria-label=""
     >
       {props.items.map((item) => (
-        <SplideSlide key={item.id}>
+        <SplideSlide key={`${item.id} splide`}>
           <div
             className={`bg-slate-300 w-full h-full flex items-end min-h-[60vh] text-gray-900 p-8 rounded-3xl bg-cover bg-center relative z-10 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-3xl before:-z-[1] before:content-[''] before:bg-gradient-to-tr before:from-[#000] ${
               props.className || ""
@@ -38,7 +39,12 @@ const Slide = (props: SlideProps) => {
                 {item.name}
               </div>
               <div className="mt-5">
-                <WatchTrailerButton ytId={""} />
+                <Link
+                  href={`/details/${item.media_type}/${item.id}`}
+                  className="text-black py-4 px-6 font-bold bg-white rounded-xl hover:bg-orange-400"
+                >
+                  Read More
+                </Link>
               </div>
             </div>
           </div>

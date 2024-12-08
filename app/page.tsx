@@ -13,7 +13,6 @@ import delayPromise from "./utils/delayPromise";
 import FsLoader from "./components/FsLoader";
 import forceLoadHiddenImages from "./utils/ImageLoader";
 import Loader from "./components/Loader";
-import Jiji from "./components/Jiji";
 
 export default function Home() {
   const [mainLoading, setMainLoading] = useState(true);

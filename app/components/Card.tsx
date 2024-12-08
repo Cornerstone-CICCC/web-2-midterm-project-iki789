@@ -24,9 +24,9 @@ const Card = (props: CardProps) => {
           />
         </Link>
         <div className="absolute w-full bottom-0 left-0 p-2 rounded-bl-2xl rounded-br-2xl bg-gradient-to-r from-[#000]">
-          <div className="font-semibold mb-1">{props.title}</div>
+          <div className="font-semibold mb-1 text-white">{props.title}</div>
           <div className="flex text-sm divide-solid divide-x-2 divide-white divide-opacity-25">
-            <div className="flex items-center pr-3">
+            <div className="flex items-center pr-3 text-white">
               <FaStar className="text-yellow-500 mr-1" />
               {props.rating ? props.rating.toFixed(1) : ""}
             </div>
