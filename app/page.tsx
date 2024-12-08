@@ -49,7 +49,6 @@ export default function Home() {
   return (
     <div className="min-h-screen mb-8 gap-16 font-[family-name:var(--font-geist-sans)]">
       <main>
-        <Jiji />
         {mainLoading ? <FsLoader /> : null}
         {isLoading ? (
           <div className="mt-40">
