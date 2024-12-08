@@ -1,24 +1,36 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./components/Card";
-import FsLoader from "./components/FsLoader";
-import Loader from "./components/Loader";
 import Slide from "./components/Slide";
-import { fetchTrending, TrendingResponseItem } from "./services/mService";
+import {
+  fetchTopMovies,
+  fetchTopSeries,
+  fetchTrending,
+  TrendingResponseItem,
+} from "./services/mService";
 import delayPromise from "./utils/delayPromise";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [trending, setTrending] = useState<TrendingResponseItem[]>([]);
+  const [topMovies, setTopMovies] = useState<TrendingResponseItem[]>([]);
+  const [topSeries, setTopSeries] = useState<TrendingResponseItem[]>([]);
 
   useEffect(() => {
     (async function () {
       const trending = (await delayPromise(
         fetchTrending
       )) as TrendingResponseItem[];
+      const topMovies = (await delayPromise(
+        fetchTopMovies
+      )) as TrendingResponseItem[];
+      const topSeries = (await delayPromise(
+        fetchTopSeries
+      )) as TrendingResponseItem[];
       setTrending(trending);
-      console.log({ trending });
+      setTopMovies(topMovies);
+      setTopSeries(topSeries);
       setIsLoading(false);
     })();
   }, [isLoading]);
@@ -31,53 +43,41 @@ export default function Home() {
           <Slide items={trending}></Slide>
         </section>
 
-        <section className="container mx-auto">
+        <section className="container mx-auto mt-8">
           <h2 className="font-bold text-2xl mb-4 text-black dark:text-white">
-            Top Rated Animation
+            Top Rated Movies
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
-            <Card
-              id={""}
-              title={"The Wild Robot"}
-              rating={"8.0"}
-              year={"2014"}
-            />
+            {topMovies.map((movie) => (
+              <Card
+                key={movie.id}
+                mId={movie.id}
+                title={movie.title || ""}
+                rating={movie.vote_average}
+                year={movie.first_air_date}
+                poster={movie.poster_path}
+                mediaType={"movie"}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="container mx-auto mt-8">
+          <h2 className="font-bold text-2xl mb-4 text-black dark:text-white">
+            Top Rated Series
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {topSeries.map((series) => (
+              <Card
+                key={series.id}
+                mId={series.id}
+                title={series.name || ""}
+                rating={series.vote_average}
+                year={series.first_air_date}
+                poster={series.poster_path}
+                mediaType={"tv"}
+              />
+            ))}
           </div>
         </section>
       </main>

@@ -3,7 +3,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Card from "./Card";
 import Loader from "./Loader";
-import { fetchMovies } from "../services/mService";
+import { searchMovies, TrendingResponseItem } from "../services/mService";
 import delayPromise from "../utils/delayPromise";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
@@ -28,7 +28,7 @@ interface SearchOverlayProps {
 }
 
 const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<TrendingResponseItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -42,9 +42,10 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
   useEffect(() => {
     if (searchValue) {
       (async function () {
-        const movies = await delayPromise(fetchMovies);
-        console.log({ movies });
-        setResults([{ asd: "asd" }]);
+        const results = (await delayPromise(() =>
+          searchMovies(searchValue)
+        )) as TrendingResponseItem[];
+        setResults(results);
         setLoading(false);
       })();
     } else {
@@ -56,6 +57,10 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
   const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
     setSearchValue(e.target.value);
+  };
+
+  const handleCardClick = () => {
+    onClose();
   };
 
   return (
@@ -98,9 +103,21 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
                     </h2>
                   ) : null}
 
-                  <div className="grid grid-cols-2 gap-2 mt-4 h-[75vh] overflow-scroll">
+                  <div className="grid grid-cols-2 gap-2 items-start mt-4 h-[72vh] overflow-scroll md:grid-cols-4">
                     {!loading && results.length ? (
-                      <Card id={""} title={""} rating={""} year={""} />
+                      results.map((item) => (
+                        <div onClick={handleCardClick}>
+                          <Card
+                            key={item.id + "search"}
+                            mId={item.id}
+                            title={item.title || item.name || ""}
+                            rating={item.vote_average}
+                            year={item.first_air_date}
+                            poster={item.poster_path}
+                            mediaType={item.media_type === "" ? "movie" : "tv"}
+                          />
+                        </div>
+                      ))
                     ) : (
                       <div className="text-3xl text-gray-600 mt-10 col-span-2">
                         No results found.

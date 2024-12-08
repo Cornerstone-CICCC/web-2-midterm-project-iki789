@@ -24,7 +24,7 @@ const Slide = (props: SlideProps) => {
       aria-label=""
     >
       {props.items.map((item) => (
-        <SplideSlide key={item.name}>
+        <SplideSlide key={item.id}>
           <div
             className={`bg-slate-300 w-full h-full flex items-end min-h-[60vh] text-gray-900 p-8 rounded-3xl bg-cover bg-center relative z-10 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-3xl before:-z-[1] before:content-[''] before:bg-gradient-to-tr before:from-[#000] ${
               props.className || ""

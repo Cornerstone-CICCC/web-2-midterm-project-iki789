@@ -1,6 +1,7 @@
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import Search from "./Search";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -10,7 +11,9 @@ const Header = () => {
           <div>
             <Search />
           </div>
-          <div className="font-bold">AniMovie</div>
+          <Link href="/" className="font-bold">
+            AniMovie
+          </Link>
           <div>
             <ThemeToggle />
           </div>
