@@ -46,7 +46,7 @@ export default function Home() {
   }, [isLoading]);
 
   return (
-    <div className="min-h-screen mb-8 gap-16 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-[72vh] mb-8 gap-16 font-[family-name:var(--font-geist-sans)]">
       <main>
         {mainLoading ? <FsLoader /> : null}
         {isLoading ? (
