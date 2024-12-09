@@ -1,6 +1,8 @@
 ## **Meet the Team of Koki’s Anime**
-![Meet the team](https://github.com/Cornerstone-CICCC/web-2-midterm-project-iki789/blob/dev/public/cover.jpg?raw=true)
 At Koki’s Anime, three quirky characters bring the website to life: **Koki**, **Ishishi**, and **Noshishi**.
+
+![Meet the team](https://github.com/Cornerstone-CICCC/web-2-midterm-project-iki789/blob/dev/public/cover.jpg?raw=true)
+
 
 •  **Koki**: The smart and energetic leader of the crew. Koki. She’s not great so at games, so she found her true calling in the world of anime, Koki teams up with Ishishi to handle the crucial task of making fetch requests and delivering packets. Together, they ensure the website runs smoothly.
 
