@@ -12,6 +12,11 @@ export const searchMovies = async (
         keywords
       )}&page=${i}`
     );
+
+    if (!response.ok) {
+      throw new Error("Something ent wrong!");
+    }
+
     const data = await response.json();
 
     const filtered = data.results.filter(
@@ -75,7 +80,7 @@ export const fetchTopMovies = async (): Promise<TrendingResponseItem[]> => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.results);
+      // console.log(data.results);
       return data.results.slice(0, 15) as TrendingResponseItem[];
     });
 };
@@ -88,6 +93,27 @@ export const fetchTopSeries = async (): Promise<TrendingResponseItem[]> => {
     .then((data) => {
       return data.results.slice(0, 15) as TrendingResponseItem[];
     });
+};
+
+export const fetchTrailer = async (id: number, type: "movie" | "tv") => {
+  const endpoint = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${API_KEY}`;
+
+  try {
+    const response = await fetch(endpoint);
+    const data: TrailerResponse = await response.json();
+
+    // Find the first trailer
+    const trailer = data.results.find(
+      (video) => video.type === "Trailer" && video.site === "YouTube"
+    );
+
+    if (!trailer) {
+      console.log("No trailer found.");
+    }
+    return trailer;
+  } catch (error) {
+    console.error("Error fetching trailer:", error);
+  }
 };
 
 export interface TrendingResponseItem {
@@ -107,6 +133,24 @@ export interface TrendingResponseItem {
   vote_average: number;
   vote_count: number;
   origin_country: string[];
+}
+
+export interface TrailerResponse {
+  id: number;
+  results: [
+    {
+      iso_639_1: string;
+      iso_3166_1: string;
+      name: string;
+      key: string;
+      site: string;
+      size: number;
+      type: string;
+      official: true;
+      published_at: string;
+      id: string;
+    }
+  ];
 }
 
 export interface MediaDetails {

@@ -1,19 +1,28 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import WatchTrailerButton from "@/app/components/WatchTrailerButton";
 import Loader from "@/app/components/Loader";
-import { fetchDetails, MediaDetails } from "@/app/services/mService";
+import {
+  fetchDetails,
+  fetchTrailer,
+  MediaDetails,
+} from "@/app/services/mService";
 import delayPromise from "@/app/utils/delayPromise";
+import WatchTrailerButton from "@/app/components/WatchTrailerButton";
+import { useParams } from "next/navigation";
 
-export default function Movies({
-  params,
-}: {
-  params: Promise<{ id: number; m: "movie" | "tv" }>;
-}) {
-  const { id, m } = use(params);
+interface MovieProps {
+  id: number;
+  m: "movie" | "tv";
+}
+
+export default function Movies() {
+  const params = useParams();
+  const { id, m } = params as unknown as MovieProps;
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [details, setDetails] = useState<MediaDetails>();
+  const [trailerKey, setTrailerKey] = useState<string>("");
 
   useEffect(() => {
     (async function () {
@@ -33,6 +42,13 @@ export default function Movies({
     })();
   }, []);
 
+  useEffect(() => {
+    (async function () {
+      const result = await fetchTrailer(id, m);
+      setTrailerKey(result?.key || "");
+    })();
+  }, []);
+
   return (
     <div className="min-h-[74vh] text-black dark:text-white mb-8 gap-16 font-[family-name:var(--font-geist-sans)]">
       {isLoading ? (
@@ -48,7 +64,7 @@ export default function Movies({
             <div className="md:grid md:grid-cols-3 md:gap-8">
               <div className="">
                 <MediaCover path={details.poster_path} />
-                {/* <WatchTrailerButton /> */}
+                <WatchTrailerButton ytId={trailerKey} />
               </div>
               <div className="col-span-2">
                 <h1 className="text-2xl font-black mt-4">

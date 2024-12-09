@@ -7,6 +7,7 @@ import { searchMovies, TrendingResponseItem } from "../services/mService";
 import delayPromise from "../utils/delayPromise";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import Offline from "./Offline";
 
 const Search = () => {
   const [showOverlayer, setShowOverlayer] = useState<boolean>(false);
@@ -29,6 +30,7 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
   const [results, setResults] = useState<TrendingResponseItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -40,11 +42,18 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
   useEffect(() => {
     if (searchValue) {
       (async function () {
-        const results = (await delayPromise(() =>
-          searchMovies(searchValue)
-        )) as TrendingResponseItem[];
-        setResults(results);
-        setLoading(false);
+        try {
+          setFetchError(false);
+          const results = (await delayPromise(() =>
+            searchMovies(searchValue)
+          )) as TrendingResponseItem[];
+          setResults(results);
+          setLoading(false);
+        } catch (err) {
+          console.log(err);
+          setLoading(false);
+          setFetchError(true);
+        }
       })();
     } else {
       setLoading(false);
@@ -63,7 +72,7 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
 
   return (
     <div
-      className="fixed left-0 top-0 w-full h-full bg-slate-800 z-[30]"
+      className="fixed left-0 top-0 w-full h-full bg-white dark:bg-slate-800 z-[30]"
       tabIndex={0}
     >
       <div className="flex justify-end mt-4 mr-2">
@@ -84,9 +93,17 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
             onChange={handleChange}
             value={searchValue}
             autoComplete="off"
+            autoFocus
           />
         </div>
         <div className="mt-6">
+          {!loading && fetchError ? (
+            <div className="h-[75vh] flex items-center justify-center">
+              <Offline />
+            </div>
+          ) : (
+            <></>
+          )}
           {searchValue.length ? (
             <>
               {loading && searchValue ? (
@@ -95,7 +112,7 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
                 </div>
               ) : (
                 <>
-                  {!loading && searchValue ? (
+                  {!fetchError && !loading && searchValue ? (
                     <h2 className="text-orange-600 font-semibold text-3xl">
                       Results
                     </h2>

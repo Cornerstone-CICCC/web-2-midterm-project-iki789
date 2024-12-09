@@ -124,7 +124,7 @@ const Jiji = () => {
 
   const handleClick = () => {
     setClickCount(clickCount + 1);
-    console.log(currentState === stateMap[4], currentState, stateMap[3]);
+    // console.log(currentState === stateMap[4], currentState, stateMap[3]);
     if (
       currentState === stateMap[2] ||
       currentState === stateMap[3] ||
