@@ -5,8 +5,11 @@ const About = () => {
     <div className="min-h-[72vh] mb-8 gap-16 font-[family-name:var(--font-geist-sans)]">
       <main>
         <section className="container mx-auto mb-4">
-          <div className="md:grid md:gap-8">
-            <div className="">
+          <div className="md:grid md:grid-cols-3 md:gap-8">
+            <div>
+              <img src="/icon-512x512.png" className="rounded-xl" alt="koki" />
+            </div>
+            <div className="md:col-span-2">
               <h2 className="text-orange-600 font-semibold text-3xl mt-4 mb-5">
                 About Koki&apos;s Anime
               </h2>
