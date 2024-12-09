@@ -1,4 +1,5 @@
 ## Welcome to Koki's Anime!
+
 Discover, explore, and immerse yourself in the captivating world of anime at **Koki’s Anime**, your ultimate hub for anime movies and series. 
 
 At Koki’s Anime, we pull rich, up-to-date data from **TMDb (The Movie Database)** to provide you with detailed information about your favorite shows and movies. From anime classics to the latest releases, you’ll find synopses, ratings, and more, all powered by TMDb’s reliable and comprehensive database.
