@@ -8,9 +8,7 @@ import delayPromise from "../utils/delayPromise";
 import { FaSearch } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
-interface SearchProps {}
-
-const Search = (props: SearchProps) => {
+const Search = () => {
   const [showOverlayer, setShowOverlayer] = useState<boolean>(false);
 
   return (
@@ -106,7 +104,10 @@ const SearchOverlay = ({ onClose }: SearchOverlayProps) => {
                   <div className="grid grid-cols-2 gap-2 items-start mt-4 h-[72vh] overflow-scroll md:grid-cols-4">
                     {!loading && results.length ? (
                       results.map((item) => (
-                        <div onClick={handleCardClick}>
+                        <div
+                          onClick={handleCardClick}
+                          key={`${item.id} result`}
+                        >
                           <Card
                             key={item.id + "search"}
                             mId={item.id}

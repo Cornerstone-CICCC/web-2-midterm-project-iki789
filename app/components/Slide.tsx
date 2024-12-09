@@ -1,10 +1,7 @@
 "use client";
 
 import React from "react";
-import Button from "./Button";
-import { FaCirclePlay } from "react-icons/fa6";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import WatchTrailerButton from "./WatchTrailerButton";
 import { TrendingResponseItem } from "../services/mService";
 import Link from "next/link";
 

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FaMoon, FaRegSun } from "react-icons/fa";
 
 const systemIsDarkTheme =
+  typeof window !== "undefined" &&
   window.matchMedia &&
   window.matchMedia("(prefers-color-scheme: dark)").matches;
 

@@ -14,7 +14,7 @@ const Header = () => {
             <Search />
           </div>
           <Link href="/" className="font-bold">
-            Koki's Anime
+            Koki&apos;s Anime
           </Link>
           <div>
             <ThemeToggle />

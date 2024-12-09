@@ -1,7 +1,35 @@
-import type { NextConfig } from "next";
+const withPWAInit = require("next-pwa");
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const isDev = process.env.NODE_ENV !== "production";
+
+const withPWA = withPWAInit({
+  dest: "public",
+  disable: isDev,
+
+  exclude: [
+    // add buildExcludes here
+    ({ asset }: any) => {
+      if (
+        asset.name.startsWith("server/") ||
+        asset.name.match(
+          /^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/
+        )
+      ) {
+        return true;
+      }
+      if (isDev && !asset.name.startsWith("static/runtime/")) {
+        return true;
+      }
+      return false;
+    },
+  ],
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    // appDir: true,
+  },
 };
 
-export default nextConfig;
+module.exports = withPWA(nextConfig);

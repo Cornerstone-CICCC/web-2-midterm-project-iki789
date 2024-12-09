@@ -1,11 +1,10 @@
 const API_KEY = "fde7e320e3ebc33b85faf37eae8626db";
-const baseUrl = "https://api.themoviedb.org/3";
 const animationGenre = 16;
 
 export const searchMovies = async (
   keywords: string
 ): Promise<TrendingResponseItem[]> => {
-  let allResults: TrendingResponseItem[] = [];
+  const allResults: TrendingResponseItem[] = [];
 
   for (let i = 1; i <= 6; i++) {
     const response = await fetch(
@@ -14,11 +13,7 @@ export const searchMovies = async (
       )}&page=${i}`
     );
     const data = await response.json();
-    console.log({ data });
-    // @ts-ignore
-    // if (data.results.length) break;
 
-    // @ts-ignore
     const filtered = data.results.filter(
       (item: TrendingResponseItem) =>
         item.genre_ids &&
@@ -29,7 +24,6 @@ export const searchMovies = async (
 
     allResults.push(...filtered);
   }
-  console.log(allResults);
   return new Promise((resolve) => resolve(allResults));
 };
 

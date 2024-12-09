@@ -1,11 +1,10 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-import WatchTrailerButton from "@/app/components/WatchTrailerButton";
+// import WatchTrailerButton from "@/app/components/WatchTrailerButton";
 import Loader from "@/app/components/Loader";
 import { fetchDetails, MediaDetails } from "@/app/services/mService";
 import delayPromise from "@/app/utils/delayPromise";
-import { useRouter } from "next/navigation";
 
 export default function Movies({
   params,
@@ -15,7 +14,6 @@ export default function Movies({
   const { id, m } = use(params);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [details, setDetails] = useState<MediaDetails>();
-  const router = useRouter();
 
   useEffect(() => {
     (async function () {
@@ -50,7 +48,7 @@ export default function Movies({
             <div className="md:grid md:grid-cols-3 md:gap-8">
               <div className="">
                 <MediaCover path={details.poster_path} />
-                <WatchTrailerButton />
+                {/* <WatchTrailerButton /> */}
               </div>
               <div className="col-span-2">
                 <h1 className="text-2xl font-black mt-4">
