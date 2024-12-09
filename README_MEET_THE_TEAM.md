@@ -9,3 +9,5 @@ At Koki’s Anime, three quirky characters bring the website to life: **Koki**, 
 •  **Noshishi**: The larger and lazier twin, Noshishi isn’t too keen on hard work and spends most of his time eating and sleeping. Despite his laid-back nature, Noshishi has an important job: serving the menu. It’s his only task, but he does it well **(sometimes)!**
 
 Together, these characters bring Koki’s Anime to life and make it fun and functional for everyone!
+
+[Next](README_EXPLORE.md)
