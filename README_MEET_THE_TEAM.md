@@ -1,4 +1,4 @@
-## **Meet the Characters of Koki’s Anime**
+## **Meet the Team of Koki’s Anime**
 ![Meet the team](https://github.com/Cornerstone-CICCC/web-2-midterm-project-iki789/blob/dev/public/cover.jpg?raw=true)
 At Koki’s Anime, three quirky characters bring the website to life: **Koki**, **Ishishi**, and **Noshishi**.
 
