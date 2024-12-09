@@ -1,8 +1,8 @@
 ## Welcome to Koki's Anime!
 
-Discover, explore, and immerse yourself in the captivating world of anime at **Koki’s Anime**, your ultimate hub for anime movies and series. 
+Explore the world of anime with **Koki’s Anime**, your go-to site for movies and series.
 
-At Koki’s Anime, we pull rich, up-to-date data from **TMDb (The Movie Database)** to provide you with detailed information about your favorite shows and movies. From anime classics to the latest releases, you’ll find synopses, ratings, and more, all powered by TMDb’s reliable and comprehensive database.
+At Koki’s Anime, we pull rich, up-to-date data from **TMDb (The Movie Database)** to provide you with detailed information about trending and favorite shows and movies. From anime classics to the latest releases, you’ll find story-plots, ratings, and more, all powered by TMDb’s reliable and comprehensive database.
 
 Start exploring today and let Koki’s Anime connect you to the magic of anime storytelling!
 
