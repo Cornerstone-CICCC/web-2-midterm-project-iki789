@@ -8,6 +8,6 @@ Start exploring today and let Kiki’s Anime connect you to the magic of anime s
 ## **Behind the Code: How Kiki’s Anime Works**
 Kiki’s Anime is built using **Next.js** for fast and responsive performance, and **Tailwind CSS** for a quick and stylish design. We use the **Fetch API** to retrieve data from **TMDb (The Movie Database)**, ensuring you always have the latest information on anime movies and series. These tools work together to create a smooth and enjoyable experience for exploring the world of anime.
 
-[Next](MEET_THE_WORKERS.md)
+[Next](MEET_THE_CHARACTERS.md)
 
 
