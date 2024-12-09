@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <div className="container mx-auto mb-8">
         <div className="flex justify-between items-center rounded-3xl border-slate-300 py-4 px-6 bg-slate-400 text-black bg-opacity-25 dark:text-white dark:bg-sky-500 dark:bg-opacity-25">
-          <div className="text-sm">2024 AniMovies Inc.</div>
+          <div className="text-sm">2024 Koki&apos;s Anime Inc.</div>
           <div className="flex gap-2">
             <a
               href="#"
